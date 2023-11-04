@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:300,400&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/e7ebc2fc39.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0; /* Cor de fundo de exemplo */
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .login-title {
+            font-size: 24px;
+            margin: 10px 0;
+        }
+
+        .input-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .login-input {
+            margin: 5px 0;
+        }
+
+        .button-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .login-button {
+            padding: 10px 20px;
+            margin-left: 10px;
+        }
+
+        .checkbox {
+            margin-right: 5px;
+        }
+    </style>
+    <script>
+function login() {
+    const user = document.getElementById("user").value;
+    const senha = document.getElementById("senha").value;
+    const isHuman = document.getElementById("ehumano").checked;
+    const usuarioNoLocalStorage = localStorage.getItem(user);
+
+    if (isHuman) {
+        if (usuarioNoLocalStorage !== null) {
+            const infoUsuario = JSON.parse(usuarioNoLocalStorage).info;
+
+            if (infoUsuario.senha === senha) {
+                alert("Login efetuado com sucesso");
+                const credenciaisFeias = window.btoa(user + "-" + senha);
+                sessionStorage.setItem("credentials", credenciaisFeias);
+                window.location.href = "tarefas.html";
+            } else {
+                alert("Senha incorreta");
+            }
+        } else {
+            alert("Usuário não existe");
+        }
+    }
+}
+function registrar() {
+  const user = document.getElementById("user").value;
+  const senha = document.getElementById("senha").value;
+  
+  
+  const usuarioNoLocalStorage = localStorage.getItem(user);
+  
+  if (usuarioNoLocalStorage !== null) {
+    alert("Usuário já existe. Escolha um nome de usuário diferente.");
+  } else {
+    
+    const infoUsuario = {
+      senha: senha,
+    };
+    
+    
+    localStorage.setItem(user, JSON.stringify({ info: infoUsuario, tarefas: [] }));
+    
+    alert("Usuário registrado com sucesso.");
+  }
+}
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1 class="login-title">LOGIN</h1>
+        <div class="input-container">
+            <input type="text" class="login-input" id="user" placeholder="username" />
+            <input type="password" class="login-input" id="senha" placeholder="password" />
+        </div>
+        <div class="button-container">
+            Você é humano? 
+            <input type="checkbox" id="ehumano" class="checkbox" />
+            <button class="login-button" onclick="login()">
+                <i class="fas fa-angle-double-right" style="color: #f63700;"></i>
+            </button>
+            <button class="login-button" onclick="registrar()">
+                <i class="fas fa-user-plus" style="color: #34a853;"></i> Registrar
+            </button>
+        </div>
+    </div>
+</body>
+</html>

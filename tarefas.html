@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:300,400&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/e7ebc2fc39.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="main.js" defer></script>
+    <title>Todo List - Fullture</title>
+  </head>
+  <body>
+    <header>
+      <h1>FULLTURE Todo List</h1>
+    </header>
+
+    <form>
+      <input type="text" id="input-add" class="todo-input" maxlength="40" />
+      <button
+        class="todo-button"
+        id="btn-add"
+        type="button"
+        onclick="adicionar()"
+      >
+        <i class="fas fa-plus-square"></i>
+      </button>
+      <div class="select">
+        <select name="todos" class="filter-todo" id="select-filtro">
+          <option value="all">Todas</option>
+          <option value="completed">Finalizadas</option>
+          <option value="uncompleted">Não Finalizadas</option>
+        </select>
+      </div>
+    </form>
+
+    <div class="todo-container">
+      <ul class="todo-list" id="tarefas">
+        <div class="todo">
+          <li class="todo-item">Estudar Algoritmo</li>
+          <button class="check-btn">
+            <i class="fas fa-check" aria-hidden="true"></i>
+          </button>
+          <button class="trash-btn">
+            <i class="fas fa-trash" aria-hidden="true"></i>
+          </button>
+        </div>
+        <div class="todo">
+          <li class="todo-item">Estudar JavaScript</li>
+          <button class="check-btn">
+            <i class="fas fa-check" aria-hidden="true"></i>
+          </button>
+          <button class="trash-btn">
+            <i class="fas fa-trash" aria-hidden="true"></i>
+          </button>
+        </div>
+        <div class="todo">
+          <li class="todo-item">Entregar desafio JavaScript</li>
+          <button class="check-btn">
+            <i class="fas fa-check" aria-hidden="true"></i>
+          </button>
+          <button class="trash-btn">
+            <i class="fas fa-trash" aria-hidden="true"></i>
+          </button>
+        </div>
+      </ul>
+    </div>
+  </body>
+</html>

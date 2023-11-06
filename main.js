@@ -33,14 +33,14 @@ function adicionar() {
   const credenciais = sessionStorage.getItem("credentials");
   const userLogado = credenciais.split("-")[0];
 
-  // Obtenha as tarefas do usuário e atualize-as
+  
   const tarefasUsuario = JSON.parse(localStorage.getItem(userLogado));
   tarefasUsuario.tarefas.push(objTarefa);
 
   atualizarLocalStorage(userLogado, tarefasUsuario);
 
   carregarTarefasDoLocalStorage(userLogado);
-  inputAdd.value = ""; // Limpa o campo de entrada
+  inputAdd.value = ""; 
 }
 function handleClick(e) {
   if (e.target.nodeName === "BUTTON") {
@@ -100,7 +100,7 @@ function removerTarefa(e) {
   const userLogado = credenciais.split("-")[0];
   const tarefasUsuario = JSON.parse(localStorage.getItem(userLogado));
 
-  // Atualize as tarefas e remova a tarefa específica
+  
   tarefasUsuario.tarefas = tarefasUsuario.tarefas.filter(function filtrar(item) {
     return item.id !== id.split("-")[1];
   });
@@ -115,7 +115,7 @@ function finalizarTarefa(e) {
   const userLogado = credenciais.split("-")[0];
   const tarefasUsuario = JSON.parse(localStorage.getItem(userLogado));
 
-  // Encontre a tarefa e marque-a como "done"
+  
   const posicaoDaTarefaNoArray = tarefasUsuario.tarefas.findIndex(function encontrar(
     item
   ) {
@@ -135,23 +135,23 @@ function carregarTarefasDoLocalStorage(userLogado) {
   }
 }
 
-// Função para atualizar o localStorage com as tarefas do usuário
+o
 function atualizarLocalStorage(userLogado, tarefasUsuario) {
   localStorage.setItem(userLogado, JSON.stringify(tarefasUsuario));
 }
 
-// Função para criar uma conta para um novo usuário
+
 function criarConta(nomeUsuario) {
   const tarefasUsuario = { info: { senha: "" }, tarefas: [] };
   localStorage.setItem(nomeUsuario, JSON.stringify(tarefasUsuario));
 }
 
-// Quando o usuário faz login
+
 window.addEventListener("load", function () {
   const credenciais = sessionStorage.getItem("credentials");
   const userLogado = credenciais.split("-")[0];
 
-  // Verificar se o objeto para o usuário já existe no localStorage e criá-lo se não existir
+  
   if (!localStorage.getItem(userLogado)) {
     criarConta(userLogado);
   }

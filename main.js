@@ -56,6 +56,7 @@ window.addEventListener("load", function () {
   const userLogado = credenciais.split("-")[0];
 
   if (!localStorage.getItem(userLogado)) {
+    console.log(userLogado)
     window.location.href = "index.html";
   }
 
@@ -135,7 +136,6 @@ function carregarTarefasDoLocalStorage(userLogado) {
   }
 }
 
-o
 function atualizarLocalStorage(userLogado, tarefasUsuario) {
   localStorage.setItem(userLogado, JSON.stringify(tarefasUsuario));
 }

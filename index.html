@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -69,13 +69,13 @@ function login() {
             const infoUsuario = JSON.parse(usuarioNoLocalStorage).info;
 
             if (infoUsuario.senha === senha) {
-                alert("Login efetuado com sucesso");
-                const credenciaisFeias = window.btoa(user + "-" + senha);
-                sessionStorage.setItem("credentials", credenciaisFeias);
-                window.location.href = "tarefas.html";
-            } else {
-                alert("Senha incorreta");
-            }
+    alert("Login efetuado com sucesso");
+    const credenciaisFeias = user + "-" + senha;
+    sessionStorage.setItem("credentials", btoa(credenciaisFeias));
+    window.location.href = "tarefas.html"; 
+} else {
+    alert("Senha incorreta");
+}
         } else {
             alert("Usuário não existe");
         }
